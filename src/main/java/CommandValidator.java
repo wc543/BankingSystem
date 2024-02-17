@@ -9,14 +9,18 @@ public class CommandValidator {
 	public boolean validate(String command) {
 		AccountIdValidator accountIdValidator = new AccountIdValidator();
 		AprValidator aprValidator = new AprValidator();
+		DepositValidator depositValidator = new DepositValidator();
 
 		String[] input = command.split(" ");
 
 		String accountAction = input[0].toLowerCase();
 		String accountType = input[1].toLowerCase();
 		String accountId = input[2];
-		String apr = input[3];
+		String apr = null;
 
+		if (accountAction.equals("create")) {
+			apr = input[3];
+		}
 		if (!accountAction.equals("create") && !accountAction.equals("deposit")) {
 			return false;
 		}
@@ -31,6 +35,17 @@ public class CommandValidator {
 
 		if (!aprValidator.aprIsValid(apr)) {
 			return false;
+		}
+
+		if (accountAction.equals("deposit")) {
+			if (input.length != 3) {
+				return false;
+			}
+
+			else if (!depositValidator.validateDeposit(input)) {
+				return false;
+			}
+
 		}
 
 		return true;
