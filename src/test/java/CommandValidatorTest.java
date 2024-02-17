@@ -1,3 +1,4 @@
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -26,14 +27,14 @@ public class CommandValidatorTest {
 	}
 
 	@Test
-	void create_account_is_case_insensitive() {
+	void create_account_case_insensitive_is_valid() {
 		boolean actual = commandValidator.validate("CReAte ChECkiNg 12345678 1.2");
 		assertTrue(actual);
 	}
 
 	@Test
-	void create_account_with_id_less_than_eight_digits() {
+	void create_account_with_id_less_than_eight_digits_is_invalid() {
 		boolean actual = commandValidator.validate("create checking 1234567 1.2");
-		assertTrue(actual);
+		assertFalse(actual);
 	}
 }
