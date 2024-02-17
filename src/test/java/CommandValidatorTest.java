@@ -26,6 +26,12 @@ public class CommandValidatorTest {
 	}
 
 	@Test
+	void create_account_is_case_insensitive() {
+		boolean actual = commandValidator.validate("CReAte ChECkiNg 12345678 1.2");
+		assertTrue(actual);
+	}
+
+	@Test
 	void create_account_with_id_less_than_eight_digits() {
 		boolean actual = commandValidator.validate("create checking 1234567 1.2");
 		assertTrue(actual);
