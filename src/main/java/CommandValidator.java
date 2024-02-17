@@ -1,9 +1,9 @@
 public class CommandValidator {
 
-	private Checking checking;
+	private Bank bank;
 
-	public CommandValidator(Checking checking) {
-		this.checking = checking;
+	public CommandValidator(Bank bank) {
+		this.bank = bank;
 	}
 
 	public boolean validate(String command) {
