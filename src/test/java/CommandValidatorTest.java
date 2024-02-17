@@ -37,4 +37,28 @@ public class CommandValidatorTest {
 		boolean actual = commandValidator.validate("create checking 1234567 1.2");
 		assertFalse(actual);
 	}
+
+	@Test
+	void create_account_with_id_greater_than_eight_digits_is_invalid() {
+		boolean actual = commandValidator.validate("create checking 123456789 1.2");
+		assertFalse(actual);
+	}
+
+	@Test
+	void create_account_with_apr_below_zero_is_invalid() {
+		boolean actual = commandValidator.validate("create checking 12345678 -3.0");
+		assertFalse(actual);
+	}
+
+	@Test
+	void create_account_with_apr_zero_is_valid() {
+		boolean actual = commandValidator.validate("create checking 12345678 0.0");
+		assertTrue(actual);
+	}
+
+	@Test
+	void create_account_with_apr_above_ten_is_invalid() {
+		boolean actual = commandValidator.validate("create checking 12345678 11.0");
+		assertFalse(actual);
+	}
 }
