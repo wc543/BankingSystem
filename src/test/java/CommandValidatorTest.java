@@ -31,4 +31,10 @@ public class CommandValidatorTest {
 		boolean actual = commandValidator.validate("crate savings 12345678 1.2");
 		assertFalse(actual);
 	}
+
+	@Test
+	void validate_create_command_missing_action_is_invalid() {
+		boolean actual = commandValidator.validate("savings 12345678 1.2");
+		assertFalse(actual);
+	}
 }
