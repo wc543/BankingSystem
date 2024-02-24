@@ -28,10 +28,11 @@ public class CreateCommandValidator {
 
 		boolean validNumberOfArguments = validCdAccountArgumentNumberOfArguments(command);
 		boolean validAccountId = validAccountIdLength(command[2]);
+		boolean validateIdExists = validateAccountId(command[2]);
 		boolean validApr = validApr(command[3]);
 		boolean validStartingBalance = validCdAccountStartingBalance(command[4]);
 
-		return validNumberOfArguments && validAccountId && validApr && validStartingBalance;
+		return validNumberOfArguments && validAccountId && validateIdExists && validApr && validStartingBalance;
 	}
 
 	public boolean validateCheckingOrSavingsCommandArguments(String[] command) {
@@ -41,9 +42,10 @@ public class CreateCommandValidator {
 
 		boolean validNumberOfArguments = validCheckingOrSavingsAccountNumberOfArguments(command);
 		boolean validAccountId = validAccountIdLength(command[2]);
+		boolean validateIdExists = validateAccountId(command[2]);
 		boolean validApr = validApr(command[3]);
 
-		return validNumberOfArguments && validAccountId && validApr;
+		return validNumberOfArguments && validAccountId && validateIdExists && validApr;
 	}
 
 	private boolean validCheckingOrSavingsAccountNumberOfArguments(String[] command) {
@@ -66,5 +68,9 @@ public class CreateCommandValidator {
 	private boolean validCdAccountStartingBalance(String balance) {
 		double startingBalance = Double.parseDouble(balance);
 		return startingBalance >= 1000 && startingBalance <= 10000;
+	}
+
+	private boolean validateAccountId(String accountId) {
+		return !bank.getAccount().containsKey(accountId);
 	}
 }
