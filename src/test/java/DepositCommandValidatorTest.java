@@ -48,4 +48,39 @@ public class DepositCommandValidatorTest {
 		boolean actual = commandValidator.validate("deposit 12345678 1000");
 		assertTrue(actual);
 	}
+
+	@Test
+	void deposit_negative_amount_into_savings_account_is_invalid() {
+		bank.addAccount("12345678", "Savings");
+		boolean actual = commandValidator.validate("deposit 12345678 -400");
+		assertFalse(actual);
+	}
+
+	@Test
+	void deposit_over_2500_into_savings_account_is_invalid() {
+		bank.addAccount("12345678", "Savings");
+		boolean actual = commandValidator.validate("deposit 12345678 2600");
+		assertFalse(actual);
+	}
+
+	@Test
+	void deposit_into_savings_account_is_valid() {
+		bank.addAccount("12345678", "Savings");
+		boolean actual = commandValidator.validate("deposit 12345678 1000");
+		assertTrue(actual);
+	}
+
+	@Test
+	void deposit_0_into_savings_account_is_valid() {
+		bank.addAccount("12345678", "Savings");
+		boolean actual = commandValidator.validate("deposit 12345678 1000");
+		assertTrue(actual);
+	}
+
+	@Test
+	void deposit_maximum_2500_savings_account_is_valid() {
+		bank.addAccount("12345678", "Savings");
+		boolean actual = commandValidator.validate("deposit 12345678 2500");
+		assertTrue(actual);
+	}
 }
