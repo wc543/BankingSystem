@@ -55,4 +55,35 @@ public class CreateCommandValidatorTest {
 		boolean actual = commandValidator.validate("create savings 12345678 1.2");
 		assertTrue(actual);
 	}
+
+	@Test
+	void create_account_with_apr_below_0_is_invalid() {
+		boolean actual = commandValidator.validate("create savings 12345678 -1.0");
+		assertFalse(actual);
+	}
+
+	@Test
+	void create_account_with_apr_above_10_is_invalid() {
+		boolean actual = commandValidator.validate("create savings 12345678 11.0");
+		assertFalse(actual);
+	}
+
+	@Test
+	void create_account_with_apr_0_is_valid() {
+		boolean actual = commandValidator.validate("create savings 12345678 0.0");
+		assertTrue(actual);
+	}
+
+	@Test
+	void create_account_with_apr_between_0_and_10_is_valid() {
+		boolean actual = commandValidator.validate("create savings 12345678 5.2");
+		assertTrue(actual);
+	}
+
+	@Test
+	void create_account_with_integer_apr_is_valid() {
+		boolean actual = commandValidator.validate("create savings 12345678 5");
+		assertTrue(actual);
+	}
+
 }
