@@ -6,7 +6,7 @@ public class CreateCommandValidator {
 	}
 
 	public boolean validate(String[] command) {
-		if (command.length < 4) {
+		if (command.length < 2) {
 			return false;
 		}
 
@@ -14,10 +14,31 @@ public class CreateCommandValidator {
 			return validateCheckingOrSavingsCommandArguments(command);
 		}
 
+		else if (command[1].equalsIgnoreCase("cd")) {
+			return validateCdCommandArguments(command);
+		}
+
 		return false;
 	}
 
+	private boolean validateCdCommandArguments(String[] command) {
+		if (command.length < 5) {
+			return false;
+		}
+
+		boolean validNumberOfArguments = validCdAccountArgumentNumberOfArguments(command);
+		boolean validAccountId = validAccountIdLength(command[2]);
+		boolean validApr = validApr(command[3]);
+		boolean validStartingBalance = validCdAccountStartingBalance(command[4]);
+
+		return validNumberOfArguments && validAccountId && validApr && validStartingBalance;
+	}
+
 	public boolean validateCheckingOrSavingsCommandArguments(String[] command) {
+		if (command.length < 4) {
+			return false;
+		}
+
 		boolean validNumberOfArguments = validCheckingOrSavingsAccountNumberOfArguments(command);
 		boolean validAccountId = validAccountIdLength(command[2]);
 		boolean validApr = validApr(command[3]);
@@ -40,5 +61,10 @@ public class CreateCommandValidator {
 	private boolean validApr(String aprPercent) {
 		double apr = Double.parseDouble(aprPercent);
 		return apr >= 0 && apr <= 10;
+	}
+
+	private boolean validCdAccountStartingBalance(String balance) {
+		double startingBalance = Double.parseDouble(balance);
+		return startingBalance >= 1000 && startingBalance <= 10000;
 	}
 }

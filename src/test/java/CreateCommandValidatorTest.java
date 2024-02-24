@@ -81,6 +81,12 @@ public class CreateCommandValidatorTest {
 	}
 
 	@Test
+	void create_account_with_maximum_apr_10_is_valid() {
+		boolean actual = commandValidator.validate("create savings 12345678 10.0");
+		assertTrue(actual);
+	}
+
+	@Test
 	void create_account_with_integer_apr_is_valid() {
 		boolean actual = commandValidator.validate("create savings 12345678 5");
 		assertTrue(actual);
@@ -100,8 +106,38 @@ public class CreateCommandValidatorTest {
 
 	@Test
 	void create_cd_account_without_starting_balance_is_invalid() {
-		boolean actual = commandValidator.validate("create cd 12345678");
+		boolean actual = commandValidator.validate("create cd 12345678 1.2");
 		assertFalse(actual);
+	}
+
+	@Test
+	void create_cd_account_with_starting_balance_less_than_1000_is_invalid() {
+		boolean actual = commandValidator.validate("create cd 12345678 1.2 900");
+		assertFalse(actual);
+	}
+
+	@Test
+	void create_cd_account_with_starting_balance_greater_than_10000_is_invalid() {
+		boolean actual = commandValidator.validate("create cd 12345678 1.2 19000");
+		assertFalse(actual);
+	}
+
+	@Test
+	void create_cd_account_with_starting_balance_between_1000_and_10000_is_valid() {
+		boolean actual = commandValidator.validate("create cd 12345678 1.2 5000");
+		assertTrue(actual);
+	}
+
+	@Test
+	void create_cd_account_with_minimum_starting_balance_of_1000_is_valid() {
+		boolean actual = commandValidator.validate("create cd 12345678 1.2 1000");
+		assertTrue(actual);
+	}
+
+	@Test
+	void create_cd_account_with_maximum_starting_balance_of_10000_is_valid() {
+		boolean actual = commandValidator.validate("create cd 12345678 1.2 10000");
+		assertTrue(actual);
 	}
 
 }
