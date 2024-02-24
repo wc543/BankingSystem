@@ -15,6 +15,11 @@ public class CommandValidator {
 			return validator.validate(input);
 		}
 
+		else if (input[0].equalsIgnoreCase("deposit")) {
+			DepositCommandValidator validator = new DepositCommandValidator(bank);
+			return validator.validate(input);
+		}
+
 		return false;
 	}
 }
