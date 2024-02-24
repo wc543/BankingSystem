@@ -14,11 +14,17 @@ public class CreateCommandValidator {
 	}
 
 	public boolean validateCheckingOrSavingsCommandArguments(String[] command) {
-		boolean validNumberOfArguments = validCheckingOrSavingsAccountNumberOfArguments(command);
-		boolean validAccountId = validAccountIdLength(command[2]);
-		boolean validApr = validApr(command[3]);
+		if (command.length < 4) {
+			return false;
+		}
 
-		return validNumberOfArguments && validAccountId && validApr;
+		else {
+			boolean validNumberOfArguments = validCheckingOrSavingsAccountNumberOfArguments(command);
+			boolean validAccountId = validAccountIdLength(command[2]);
+			boolean validApr = validApr(command[3]);
+
+			return validNumberOfArguments && validAccountId && validApr;
+		}
 	}
 
 	private boolean validCheckingOrSavingsAccountNumberOfArguments(String[] command) {
