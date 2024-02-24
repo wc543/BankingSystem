@@ -6,6 +6,10 @@ public class CreateCommandValidator {
 	}
 
 	public boolean validate(String[] command) {
+		if (command.length < 4) {
+			return false;
+		}
+
 		if (command[1].equalsIgnoreCase("checking") || command[1].equalsIgnoreCase("savings")) {
 			return validateCheckingOrSavingsCommandArguments(command);
 		}
@@ -14,17 +18,11 @@ public class CreateCommandValidator {
 	}
 
 	public boolean validateCheckingOrSavingsCommandArguments(String[] command) {
-		if (command.length < 4) {
-			return false;
-		}
+		boolean validNumberOfArguments = validCheckingOrSavingsAccountNumberOfArguments(command);
+		boolean validAccountId = validAccountIdLength(command[2]);
+		boolean validApr = validApr(command[3]);
 
-		else {
-			boolean validNumberOfArguments = validCheckingOrSavingsAccountNumberOfArguments(command);
-			boolean validAccountId = validAccountIdLength(command[2]);
-			boolean validApr = validApr(command[3]);
-
-			return validNumberOfArguments && validAccountId && validApr;
-		}
+		return validNumberOfArguments && validAccountId && validApr;
 	}
 
 	private boolean validCheckingOrSavingsAccountNumberOfArguments(String[] command) {
