@@ -6,6 +6,10 @@ public class DepositCommandValidator {
 	}
 
 	public boolean validate(String[] command) {
+		if (command.length < 3) {
+			return false;
+		}
+
 		if (accountExistsInBank(command)) {
 			if (depositCheckingAccount(command)) {
 				return checkingAccountDepositAmount(command[2]);
