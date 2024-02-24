@@ -37,4 +37,32 @@ public class CommandValidatorTest {
 		boolean actual = commandValidator.validate("savings 12345678 1.2");
 		assertFalse(actual);
 	}
+
+	@Test
+	void validate_deposit_command_missing_action_is_invalid() {
+		bank.addAccount("12345678", "Checking");
+		boolean actual = commandValidator.validate("12345678 200");
+		assertFalse(actual);
+	}
+
+	@Test
+	void validate_deposit_command_is_spelled_wrong_is_invalid() {
+		bank.addAccount("12345678", "Checking");
+		boolean actual = commandValidator.validate("deposi 12345678 200");
+		assertFalse(actual);
+	}
+
+	@Test
+	void validate_deposit_command_is_case_insensitive_is_valid() {
+		bank.addAccount("12345678", "Checking");
+		boolean actual = commandValidator.validate("dEPoSIt 12345678 200");
+		assertTrue(actual);
+	}
+
+	@Test
+	void validate_deposit_command_is_valid() {
+		bank.addAccount("12345678", "Checking");
+		boolean actual = commandValidator.validate("deposit 12345678 200");
+		assertTrue(actual);
+	}
 }
