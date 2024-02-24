@@ -40,19 +40,19 @@ public class CreateCommandValidatorTest {
 
 	@Test
 	void create_account_with_account_id_length_less_than_8_is_invalid() {
-		boolean actual = commandValidator.validate("create savings 1234567 1.2");
+		boolean actual = commandValidator.validate("create checking 1234567 1.2");
 		assertFalse(actual);
 	}
 
 	@Test
 	void create_account_with_account_id_length_more_than_8_is_invalid() {
-		boolean actual = commandValidator.validate("create savings 123456789 1.2");
+		boolean actual = commandValidator.validate("create checking 123456789 1.2");
 		assertFalse(actual);
 	}
 
 	@Test
 	void create_account_with_account_id_length_equals_8_is_valid() {
-		boolean actual = commandValidator.validate("create savings 12345678 1.2");
+		boolean actual = commandValidator.validate("create checking 12345678 1.2");
 		assertTrue(actual);
 	}
 
@@ -84,6 +84,24 @@ public class CreateCommandValidatorTest {
 	void create_account_with_integer_apr_is_valid() {
 		boolean actual = commandValidator.validate("create savings 12345678 5");
 		assertTrue(actual);
+	}
+
+	@Test
+	void create_checking_account_with_starting_balance_is_invalid() {
+		boolean actual = commandValidator.validate("create checking 12345678 200");
+		assertFalse(actual);
+	}
+
+	@Test
+	void create_savings_account_with_starting_balance_is_invalid() {
+		boolean actual = commandValidator.validate("create savings 12345678 200");
+		assertFalse(actual);
+	}
+
+	@Test
+	void create_cd_account_without_starting_balance_is_invalid() {
+		boolean actual = commandValidator.validate("create cd 12345678");
+		assertFalse(actual);
 	}
 
 }
