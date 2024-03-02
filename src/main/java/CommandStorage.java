@@ -13,4 +13,8 @@ public class CommandStorage {
 	public List<String> getInvalidCommands() {
 		return invalidCommands;
 	}
+
+	public void addInvalidCommand(String command) {
+		invalidCommands.add(command);
+	}
 }
