@@ -9,6 +9,8 @@ public class AccountTest {
 	public static final double STARTING_BALANCE = 1000.00;
 	public static final double MONEY_TO_WITHDRAW = 1000.00;
 	public static final double STARTING_APR = 1.2;
+	public static final String ACCOUNT_ID = "12345678";
+
 	Account account;
 
 	@BeforeEach
@@ -34,7 +36,7 @@ public class AccountTest {
 
 	@Test
 	void account_balance_decreases_by_amount_withdrawn() {
-		Checking checking = new Checking(STARTING_BALANCE, STARTING_APR);
+		Checking checking = new Checking(ACCOUNT_ID, STARTING_BALANCE, STARTING_APR);
 		double actual = checking.withdrawMoney(1000);
 
 		assertEquals(0, actual);
@@ -42,7 +44,7 @@ public class AccountTest {
 
 	@Test
 	void account_balance_cannot_go_below_zero_when_withdrawing() {
-		Checking checking = new Checking(STARTING_BALANCE, STARTING_APR);
+		Checking checking = new Checking(ACCOUNT_ID, STARTING_BALANCE, STARTING_APR);
 		double actual = checking.withdrawMoney(2000);
 
 		assertEquals(0, actual);
@@ -60,7 +62,7 @@ public class AccountTest {
 
 	@Test
 	void account_can_be_withdrawn_from_twice() {
-		Checking checking = new Checking(2000, STARTING_APR);
+		Checking checking = new Checking(ACCOUNT_ID, 2000, STARTING_APR);
 
 		checking.withdrawMoney(MONEY_TO_WITHDRAW);
 		checking.withdrawMoney(MONEY_TO_WITHDRAW);

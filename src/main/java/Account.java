@@ -2,19 +2,26 @@ public abstract class Account {
 	private double balance;
 	private double apr;
 	private String type;
+	private String id;
 
-	public Account(double balance, double apr) {
+	public Account(String id, double balance, double apr) {
+		this.id = id;
 		this.balance = balance;
 		this.apr = apr;
 	}
 
-	public Account(String type, double apr) {
+	public Account(String id, String type, double apr) {
+		this.id = id;
 		this.type = type;
 		this.apr = apr;
 	}
 
 	public Account() {
 		balance = 0;
+	}
+
+	public String getId() {
+		return id;
 	}
 
 	public double getBalance() {
