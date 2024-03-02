@@ -5,6 +5,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class CreateCommandValidatorTest {
+	public static final String ACCOUNT_ID = "12345678";
+	public static final double STARTING_APR = 1.2;
+
 	private CommandValidator commandValidator;
 	private Bank bank;
 
@@ -142,21 +145,21 @@ public class CreateCommandValidatorTest {
 
 	@Test
 	void create_checking_account_with_existing_account_id_is_invalid() {
-		bank.addAccount("12345678", "checking", 1.2);
+		bank.addAccount(ACCOUNT_ID, "checking", STARTING_APR);
 		boolean actual = commandValidator.validate("create checking 12345678 1.2");
 		assertFalse(actual);
 	}
 
 	@Test
 	void create_savings_account_with_existing_account_id_is_invalid() {
-		bank.addAccount("12345678", "savings", 1.2);
+		bank.addAccount(ACCOUNT_ID, "savings", STARTING_APR);
 		boolean actual = commandValidator.validate("create savings 12345678 1.2");
 		assertFalse(actual);
 	}
 
 	@Test
 	void create_cd_account_with_existing_account_id_is_invalid() {
-		bank.addAccount("12345678", "cd", 1.2);
+		bank.addAccount(ACCOUNT_ID, "cd", STARTING_APR);
 		boolean actual = commandValidator.validate("create cd 12345678 1.2");
 		assertFalse(actual);
 	}
