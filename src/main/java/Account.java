@@ -20,6 +20,13 @@ public abstract class Account {
 		balance = 0;
 	}
 
+	public Account(String id, String type, double apr, double balance) {
+		this.id = id;
+		this.type = type;
+		this.apr = apr;
+		this.balance = balance;
+	}
+
 	public String getId() {
 		return id;
 	}

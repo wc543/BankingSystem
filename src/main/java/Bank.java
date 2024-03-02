@@ -21,4 +21,10 @@ public class Bank {
 			account.put(id, new Savings(id, type, apr));
 		}
 	}
+
+	public void addCdAccount(String id, String type, double apr, double balance) {
+		if (type.equalsIgnoreCase("cd")) {
+			account.put(id, new Cd(id, type, apr, balance));
+		}
+	}
 }

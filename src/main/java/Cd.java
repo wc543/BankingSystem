@@ -12,4 +12,7 @@ public class Cd extends Account {
 		super();
 	}
 
+	public Cd(String id, String type, double apr, double balance) {
+		super(id, type, apr, balance);
+	}
 }
