@@ -11,7 +11,12 @@ public class CommandProcessor {
 
 		if (input[0].equalsIgnoreCase("create")) {
 			CreateCommandProcessor processor = new CreateCommandProcessor(bank);
-			return processor.process(input);
+			processor.process(input);
+		}
+
+		else if (input[0].equalsIgnoreCase("deposit")) {
+			DepositCommandProcessor processor = new DepositCommandProcessor(bank);
+			processor.process(input);
 		}
 
 		return false;

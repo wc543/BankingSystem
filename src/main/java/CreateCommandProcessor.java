@@ -6,7 +6,7 @@ public class CreateCommandProcessor {
 		this.bank = bank;
 	}
 
-	public boolean process(String[] command) {
+	void process(String[] command) {
 
 		if (command[1].equalsIgnoreCase("checking") || command[1].equalsIgnoreCase("savings")) {
 			double apr = Double.parseDouble(command[3]);
@@ -19,6 +19,5 @@ public class CreateCommandProcessor {
 
 			bank.addCdAccount(command[2], command[1], apr, balance);
 		}
-		return false;
 	}
 }
