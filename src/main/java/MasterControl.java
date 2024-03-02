@@ -13,7 +13,9 @@ public class MasterControl {
 	}
 
 	public List<String> start(List<String> input) {
-		commandStorage.addInvalidCommand("creat checking 12345678 1.0");
+		for (String command : input) {
+			commandStorage.addInvalidCommand(command);
+		}
 		return commandStorage.getInvalidCommands();
 	}
 }
