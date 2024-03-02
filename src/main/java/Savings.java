@@ -1,11 +1,11 @@
 public class Savings extends Account {
 
-	public Savings(double balance) {
-		super(balance);
+	public Savings(double balance, double apr) {
+		super(balance, apr);
 	}
 
-	public Savings(String type) {
-		super(type);
+	public Savings(String type, double apr) {
+		super(type, apr);
 	}
 
 	public Savings() {

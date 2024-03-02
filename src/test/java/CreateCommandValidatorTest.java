@@ -142,21 +142,21 @@ public class CreateCommandValidatorTest {
 
 	@Test
 	void create_checking_account_with_existing_account_id_is_invalid() {
-		bank.addAccount("12345678", "1.2");
+		bank.addAccount("12345678", "checking", 1.2);
 		boolean actual = commandValidator.validate("create checking 12345678 1.2");
 		assertFalse(actual);
 	}
 
 	@Test
 	void create_savings_account_with_existing_account_id_is_invalid() {
-		bank.addAccount("12345678", "1.2");
+		bank.addAccount("12345678", "savings", 1.2);
 		boolean actual = commandValidator.validate("create savings 12345678 1.2");
 		assertFalse(actual);
 	}
 
 	@Test
 	void create_cd_account_with_existing_account_id_is_invalid() {
-		bank.addAccount("12345678", "1.2");
+		bank.addAccount("12345678", "cd", 1.2);
 		boolean actual = commandValidator.validate("create cd 12345678 1.2");
 		assertFalse(actual);
 	}

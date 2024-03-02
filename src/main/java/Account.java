@@ -3,12 +3,14 @@ public abstract class Account {
 	private double apr;
 	private String type;
 
-	public Account(double balance) {
+	public Account(double balance, double apr) {
 		this.balance = balance;
+		this.apr = apr;
 	}
 
-	public Account(String type) {
+	public Account(String type, double apr) {
 		this.type = type;
+		this.apr = apr;
 	}
 
 	public Account() {
@@ -19,8 +21,12 @@ public abstract class Account {
 		return balance;
 	}
 
-	public double getApr(double currentApr) {
-		return apr = currentApr;
+	public double getApr() {
+		return apr;
+	}
+
+	public void setApr(double apr) {
+		this.apr = apr;
 	}
 
 	public double depositMoney(double moneyToDeposit) {
@@ -37,4 +43,5 @@ public abstract class Account {
 	public String getType() {
 		return type;
 	}
+
 }

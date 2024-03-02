@@ -12,8 +12,13 @@ public class Bank {
 		return account;
 	}
 
-	public void addAccount(String Id, String type) {
+	public void addAccount(String Id, String type, double apr) {
+		if (type.equalsIgnoreCase("checking")) {
+			account.put(Id, new Checking(type, apr));
+		}
 
-		account.put(Id, new Checking(type));
+		else if (type.equalsIgnoreCase("savings")) {
+			account.put(Id, new Savings(type, apr));
+		}
 	}
 }

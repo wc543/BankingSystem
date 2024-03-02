@@ -1,12 +1,12 @@
 public class Checking extends Account {
 
-	public Checking(double balance) {
+	public Checking(double balance, double apr) {
 
-		super(balance);
+		super(balance, apr);
 	}
 
-	public Checking(String type) {
-		super(type);
+	public Checking(String type, double apr) {
+		super(type, apr);
 	}
 
 	public Checking() {

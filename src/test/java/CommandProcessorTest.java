@@ -1,4 +1,4 @@
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,8 +15,10 @@ public class CommandProcessorTest {
 
 	@Test
 	void create_checking_account_with_correct_id_and_apr() {
-		boolean actual = commandProcessor.process("create checking 12345678 1.0");
-		assertTrue(actual);
+		commandProcessor.process("create checking 12345678 1.0");
+		Account account = bank.getAccount().get("12345678");
+
+		assertEquals("12345678", account.getApr());
 
 	}
 }
