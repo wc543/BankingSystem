@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 public class CommandValidatorTest {
 	public static final double STARTING_APR = 1.2;
+	public static final String CHECKING_ACCOUNT_TYPE = "Checking";
+	public static final String CHECKING_ACCOUNT_ID = "12345678";
 
 	CommandValidator commandValidator;
 	Bank bank;
@@ -42,28 +44,28 @@ public class CommandValidatorTest {
 
 	@Test
 	void validate_deposit_command_missing_action_is_invalid() {
-		bank.addAccount("12345678", "Checking", STARTING_APR);
+		bank.addAccount(CHECKING_ACCOUNT_ID, CHECKING_ACCOUNT_TYPE, STARTING_APR);
 		boolean actual = commandValidator.validate("12345678 200");
 		assertFalse(actual);
 	}
 
 	@Test
 	void validate_deposit_command_is_spelled_wrong_is_invalid() {
-		bank.addAccount("12345678", "Checking", STARTING_APR);
+		bank.addAccount(CHECKING_ACCOUNT_ID, CHECKING_ACCOUNT_TYPE, STARTING_APR);
 		boolean actual = commandValidator.validate("deposi 12345678 200");
 		assertFalse(actual);
 	}
 
 	@Test
 	void validate_deposit_command_is_case_insensitive_is_valid() {
-		bank.addAccount("12345678", "Checking", STARTING_APR);
+		bank.addAccount(CHECKING_ACCOUNT_ID, CHECKING_ACCOUNT_TYPE, STARTING_APR);
 		boolean actual = commandValidator.validate("dEPoSIt 12345678 200");
 		assertTrue(actual);
 	}
 
 	@Test
 	void validate_deposit_command_is_valid() {
-		bank.addAccount("12345678", "Checking", STARTING_APR);
+		bank.addAccount(CHECKING_ACCOUNT_ID, CHECKING_ACCOUNT_TYPE, STARTING_APR);
 		boolean actual = commandValidator.validate("deposit 12345678 200");
 		assertTrue(actual);
 	}
