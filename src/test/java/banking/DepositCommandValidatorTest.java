@@ -1,3 +1,5 @@
+package banking;
+
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -6,9 +8,9 @@ import org.junit.jupiter.api.Test;
 
 public class DepositCommandValidatorTest {
 	public static final String ACCOUNT_ID = "12345678";
-	public static final String CHECKING_ACCOUNT_TYPE = "Checking";
-	public static final String SAVINGS_ACCOUNT_TYPE = "Savings";
-	public static final String CD_ACCOUNT_TYPE = "Cd";
+	public static final String CHECKING_ACCOUNT_TYPE = "banking.Checking";
+	public static final String SAVINGS_ACCOUNT_TYPE = "banking.Savings";
+	public static final String CD_ACCOUNT_TYPE = "banking.Cd";
 	public static final double STARTING_APR = 1.2;
 
 	private CommandValidator commandValidator;
