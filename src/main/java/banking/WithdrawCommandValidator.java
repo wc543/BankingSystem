@@ -43,7 +43,7 @@ public class WithdrawCommandValidator {
 
 	private boolean checkingAccountWithdrawAmount(String amount) {
 		double withdrawAmount = Double.parseDouble(amount);
-		return withdrawAmount >= 0;
+		return withdrawAmount >= 0 && withdrawAmount <= 400;
 	}
 
 	private boolean withdrawSavingsAccount(String[] command) {
@@ -55,7 +55,7 @@ public class WithdrawCommandValidator {
 
 	private boolean savingsAccountWithdrawAmount(String amount) {
 		double withdrawAmount = Double.parseDouble(amount);
-		return withdrawAmount >= 0;
+		return withdrawAmount >= 0 && withdrawAmount <= 1000;
 	}
 
 	private boolean withdrawCdAccount(String[] command) {
