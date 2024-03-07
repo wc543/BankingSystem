@@ -113,4 +113,20 @@ public class WithdrawCommandValidatorTest {
 		assertTrue(actual);
 	}
 
+	@Test
+	void withdraw_from_cd_account_is_valid() {
+		bank.addCdAccount(ACCOUNT_ID, CD_ACCOUNT_TYPE, STARTING_APR, 5000);
+
+		boolean actual = commandValidator.validate("withdraw 12345678 5000");
+		assertTrue(actual);
+	}
+
+	@Test
+	void withdraw_less_than_cd_account_total_balance_is_invalid() {
+		bank.addCdAccount(ACCOUNT_ID, CD_ACCOUNT_TYPE, STARTING_APR, 5000);
+
+		boolean actual = commandValidator.validate("withdraw 12345678 4999");
+		assertFalse(actual);
+	}
+
 }

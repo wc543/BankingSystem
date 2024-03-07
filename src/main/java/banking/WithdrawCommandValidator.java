@@ -20,6 +20,10 @@ public class WithdrawCommandValidator {
 			else if (withdrawSavingsAccount(command)) {
 				return savingsAccountWithdrawAmount(command[2]);
 			}
+
+			else if (withdrawCdAccount(command)) {
+				return cdAccountWithdrawAmount(command);
+			}
 		}
 
 		return false;
@@ -52,5 +56,22 @@ public class WithdrawCommandValidator {
 	private boolean savingsAccountWithdrawAmount(String amount) {
 		double withdrawAmount = Double.parseDouble(amount);
 		return withdrawAmount >= 0 && withdrawAmount <= 1000;
+	}
+
+	private boolean withdrawCdAccount(String[] command) {
+		String accountId = command[1];
+		Account account = bank.getAccount().get(accountId);
+
+		return account.getType().equalsIgnoreCase("cd");
+	}
+
+	private boolean cdAccountWithdrawAmount(String[] command) {
+		String accountId = command[1];
+		Account account = bank.getAccount().get(accountId);
+
+		String withdraw = command[2];
+		double withdrawAmount = Double.parseDouble(withdraw);
+
+		return withdrawAmount == account.getBalance();
 	}
 }
