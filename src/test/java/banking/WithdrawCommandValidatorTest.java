@@ -1,6 +1,7 @@
 package banking;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -41,4 +42,33 @@ public class WithdrawCommandValidatorTest {
 		boolean actual = commandValidator.validate("withdraw 12345678");
 		assertFalse(actual);
 	}
+
+	@Test
+	void withdraw_from_checking_account_is_valid() {
+		bank.addAccount(ACCOUNT_ID, CHECKING_ACCOUNT_TYPE, STARTING_APR);
+		boolean actual = commandValidator.validate("withdraw 12345678 200");
+		assertTrue(actual);
+	}
+
+	@Test
+	void withdraw_negative_amount_from_checking_account_is_invalid() {
+		bank.addAccount(ACCOUNT_ID, CHECKING_ACCOUNT_TYPE, STARTING_APR);
+		boolean actual = commandValidator.validate("withdraw 12345678 -1");
+		assertFalse(actual);
+	}
+
+	@Test
+	void withdraw_0_from_checking_account_is_valid() {
+		bank.addAccount(ACCOUNT_ID, CHECKING_ACCOUNT_TYPE, STARTING_APR);
+		boolean actual = commandValidator.validate("withdraw 12345678 0");
+		assertTrue(actual);
+	}
+
+	@Test
+	void withdraw_more_than_400_from_checking_account_is_invalid() {
+		bank.addAccount(ACCOUNT_ID, CHECKING_ACCOUNT_TYPE, STARTING_APR);
+		boolean actual = commandValidator.validate("withdraw 12345678 401");
+		assertFalse(actual);
+	}
+
 }
