@@ -16,7 +16,12 @@ public class WithdrawCommandValidator {
 			if (withdrawCheckingAccount(command)) {
 				return checkingAccountWithdrawAmount(command[2]);
 			}
+
+			else if (withdrawSavingsAccount(command)) {
+				return savingsAccountWithdrawAmount(command[2]);
+			}
 		}
+
 		return false;
 	}
 
@@ -33,7 +38,19 @@ public class WithdrawCommandValidator {
 	}
 
 	private boolean checkingAccountWithdrawAmount(String amount) {
-		double depositAmount = Double.parseDouble(amount);
-		return depositAmount >= 0 && depositAmount <= 400;
+		double withdrawAmount = Double.parseDouble(amount);
+		return withdrawAmount >= 0 && withdrawAmount <= 400;
+	}
+
+	private boolean withdrawSavingsAccount(String[] command) {
+		String accountId = command[1];
+		Account account = bank.getAccount().get(accountId);
+
+		return account.getType().equalsIgnoreCase("savings");
+	}
+
+	private boolean savingsAccountWithdrawAmount(String amount) {
+		double withdrawAmount = Double.parseDouble(amount);
+		return withdrawAmount >= 0 && withdrawAmount <= 1000;
 	}
 }
