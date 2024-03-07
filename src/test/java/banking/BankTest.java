@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 
 public class BankTest {
 
-	public static final String CHECKING_ACCOUNT = "banking.Checking";
+	public static final String CHECKING_ACCOUNT = "Checking";
 	public static final String CHECKING_ACCOUNT_ID = "10000000";
-	public static final String SAVINGS_ACCOUNT = "banking.Savings";
+	public static final String SAVINGS_ACCOUNT = "Savings";
 	public static final String SAVINGS_ACCOUNT_ID = "20000000";
 	public static final double MONEY_TO_DEPOSIT = 1000;
 	public static final double MONEY_TO_WITHDRAW = 1000;

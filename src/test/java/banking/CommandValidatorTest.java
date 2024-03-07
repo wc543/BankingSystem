@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 public class CommandValidatorTest {
 	public static final double STARTING_APR = 1.2;
-	public static final String CHECKING_ACCOUNT_TYPE = "banking.Checking";
+	public static final String CHECKING_ACCOUNT_TYPE = "Checking";
 	public static final String CHECKING_ACCOUNT_ID = "12345678";
 
 	CommandValidator commandValidator;

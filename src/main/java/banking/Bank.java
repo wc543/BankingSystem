@@ -4,29 +4,32 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Bank {
-	private Map<String, Account> account;
+	private Map<String, Account> accounts;
 
 	Bank() {
-		account = new HashMap<>();
+		accounts = new HashMap<>();
 	}
 
 	public Map<String, Account> getAccount() {
-		return account;
+		return accounts;
 	}
 
 	public void addAccount(String id, String type, double apr) {
 		if (type.equalsIgnoreCase("checking")) {
-			account.put(id, new Checking(id, type, apr));
+			Checking account = new Checking(id, type, apr);
+			accounts.put(id, account);
 		}
 
 		else if (type.equalsIgnoreCase("savings")) {
-			account.put(id, new Savings(id, type, apr));
+			Savings account = new Savings(id, type, apr);
+			accounts.put(id, account);
 		}
 	}
 
 	public void addCdAccount(String id, String type, double apr, double balance) {
 		if (type.equalsIgnoreCase("cd")) {
-			account.put(id, new Cd(id, type, apr, balance));
+			Cd account = new Cd(id, type, apr, balance);
+			accounts.put(id, account);
 		}
 	}
 }
