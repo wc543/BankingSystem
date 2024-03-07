@@ -45,6 +45,24 @@ public class CommandValidatorTest {
 	}
 
 	@Test
+	void validate_create_command_missing_account_type_is_invalid() {
+		boolean actual = commandValidator.validate("create 12345678 1.2");
+		assertFalse(actual);
+	}
+
+	@Test
+	void validate_create_command_missing_account_id_is_invalid() {
+		boolean actual = commandValidator.validate("create savings 1.2");
+		assertFalse(actual);
+	}
+
+	@Test
+	void validate_create_command_missing_apr_is_invalid() {
+		boolean actual = commandValidator.validate("create savings 12345678");
+		assertFalse(actual);
+	}
+
+	@Test
 	void validate_deposit_command_missing_action_is_invalid() {
 		bank.addAccount(CHECKING_ACCOUNT_ID, CHECKING_ACCOUNT_TYPE, STARTING_APR);
 		boolean actual = commandValidator.validate("12345678 200");
@@ -70,5 +88,55 @@ public class CommandValidatorTest {
 		bank.addAccount(CHECKING_ACCOUNT_ID, CHECKING_ACCOUNT_TYPE, STARTING_APR);
 		boolean actual = commandValidator.validate("deposit 12345678 200");
 		assertTrue(actual);
+	}
+
+	@Test
+	void validate_deposit_command_missing_account_id_is_invalid() {
+		boolean actual = commandValidator.validate("deposit 200");
+		assertFalse(actual);
+	}
+
+	@Test
+	void validate_deposit_command_missing_amount_is_invalid() {
+		boolean actual = commandValidator.validate("deposit 12345678");
+		assertFalse(actual);
+	}
+
+	@Test
+	void validate_withdraw_command_is_valid() {
+		bank.addAccount(CHECKING_ACCOUNT_ID, CHECKING_ACCOUNT_TYPE, STARTING_APR);
+		boolean actual = commandValidator.validate("withdraw 12345678 200");
+		assertTrue(actual);
+	}
+
+	@Test
+	void validate_withdraw_command_is_case_insensitive_is_valid() {
+		bank.addAccount(CHECKING_ACCOUNT_ID, CHECKING_ACCOUNT_TYPE, STARTING_APR);
+		boolean actual = commandValidator.validate("WiThdRAW 12345678 200");
+		assertTrue(actual);
+	}
+
+	@Test
+	void validate_withdraw_command_is_spelled_wrong_is_invalid() {
+		boolean actual = commandValidator.validate("withdrw 12345678 200");
+		assertFalse(actual);
+	}
+
+	@Test
+	void validate_withdraw_command_missing_action_is_invalid() {
+		boolean actual = commandValidator.validate("12345678 200");
+		assertFalse(actual);
+	}
+
+	@Test
+	void validate_withdraw_command_missing_account_id_is_invalid() {
+		boolean actual = commandValidator.validate("withdraw 200");
+		assertFalse(actual);
+	}
+
+	@Test
+	void validate_withdraw_command_missing_amount_is_invalid() {
+		boolean actual = commandValidator.validate("withdraw 12345678");
+		assertFalse(actual);
 	}
 }
