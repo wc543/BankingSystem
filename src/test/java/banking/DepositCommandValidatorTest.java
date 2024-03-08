@@ -102,7 +102,7 @@ public class DepositCommandValidatorTest {
 	@Test
 	void deposit_0_into_savings_account_is_valid() {
 		bank.addAccount(ACCOUNT_ID, SAVINGS_ACCOUNT_TYPE, STARTING_APR);
-		boolean actual = commandValidator.validate("deposit 12345678 1000");
+		boolean actual = commandValidator.validate("deposit 12345678 0");
 		assertTrue(actual);
 	}
 
