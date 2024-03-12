@@ -62,4 +62,12 @@ public class TransferCommandValidatorTest {
 		assertTrue(actual);
 	}
 
+	@Test
+	void transfer_into_same_account_is_invalid() {
+		bank.addAccount(CHECKING_ACCOUNT_ID, CHECKING_ACCOUNT_TYPE, STARTING_APR);
+		bank.addAccount(SAVINGS_ACCOUNT_ID, CHECKING_ACCOUNT_TYPE, STARTING_APR);
+		boolean actual = commandValidator.validate("transfer 12345678 12345678 200");
+		assertFalse(actual);
+	}
+
 }
