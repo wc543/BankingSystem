@@ -8,8 +8,16 @@ public class TransferCommandValidator {
 	}
 
 	public boolean validate(String[] command) {
+		if (command.length < 4) {
+			return false;
+		}
+
 		if (fromAccountExistsInBank(command) && toAccountExistsInBank(command)) {
-			if (fromAccountExistsInBank(command) == toAccountExistsInBank(command)) {
+			if (command[1].equals(command[2])) {
+				return false;
+			}
+
+			else if (cdAccount(command)) {
 				return false;
 			}
 
@@ -29,6 +37,15 @@ public class TransferCommandValidator {
 	private boolean toAccountExistsInBank(String[] command) {
 		String accountId = command[2];
 		return bank.getAccount().containsKey(accountId);
+	}
+
+	private boolean cdAccount(String[] command) {
+		String fromAccountId = command[1];
+		String toAccountId = command[2];
+		Account fromAccount = bank.getAccount().get(fromAccountId);
+		Account toAccount = bank.getAccount().get(toAccountId);
+
+		return fromAccount.getType().equalsIgnoreCase("cd") || toAccount.getType().equalsIgnoreCase("cd");
 	}
 
 }
