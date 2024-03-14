@@ -16,6 +16,7 @@ public class CommandProcessorTest {
 	public static final String DEPOSIT_900_IN_CHECKING_ACCOUNT_COMMAND = "deposit 12345678 900";
 	public static final String DEPOSIT_1300_IN_SAVINGS_ACCOUNT_COMMAND = "deposit 87654321 1300";
 	public static final String DEPOSIT_2000_IN_SAVINGS_ACCOUNT_COMMAND = "deposit 87654321 2000";
+	public static final String WITHDRAW_200_FROM_CHECKING_ACCOUNT_COMMAND = "withdraw 12345678 200";
 
 	CommandProcessor commandProcessor;
 	Bank bank;
@@ -125,5 +126,17 @@ public class CommandProcessorTest {
 		commandProcessor.process(DEPOSIT_2000_IN_SAVINGS_ACCOUNT_COMMAND);
 
 		assertEquals(5300, account.getBalance());
+	}
+
+	@Test
+	void withdraw_from_checking_account_with_balance() {
+		commandProcessor.process(CREATE_CHECKING_ACCOUNT_COMMAND);
+		commandProcessor.process(DEPOSIT_900_IN_CHECKING_ACCOUNT_COMMAND);
+
+		Account account = bank.getAccount().get(CHECKING_ACCOUNT_ID);
+
+		commandProcessor.process(WITHDRAW_200_FROM_CHECKING_ACCOUNT_COMMAND);
+
+		assertEquals(700, account.getBalance());
 	}
 }

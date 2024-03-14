@@ -65,13 +65,6 @@ public class WithdrawCommandValidatorTest {
 	}
 
 	@Test
-	void withdraw_more_than_400_from_checking_account_is_valid() {
-		bank.addAccount(ACCOUNT_ID, CHECKING_ACCOUNT_TYPE, STARTING_APR);
-		boolean actual = commandValidator.validate("withdraw 12345678 401");
-		assertTrue(actual);
-	}
-
-	@Test
 	void withdraw_maximum_of_400_from_checking_account_is_valid() {
 		bank.addAccount(ACCOUNT_ID, CHECKING_ACCOUNT_TYPE, STARTING_APR);
 		boolean actual = commandValidator.validate("withdraw 12345678 400");
@@ -96,13 +89,6 @@ public class WithdrawCommandValidatorTest {
 	void withdraw_0_from_savings_account_is_valid() {
 		bank.addAccount(ACCOUNT_ID, SAVINGS_ACCOUNT_TYPE, STARTING_APR);
 		boolean actual = commandValidator.validate("withdraw 12345678 0");
-		assertTrue(actual);
-	}
-
-	@Test
-	void withdraw_more_than_1000_from_savings_account_is_valid() {
-		bank.addAccount(ACCOUNT_ID, SAVINGS_ACCOUNT_TYPE, STARTING_APR);
-		boolean actual = commandValidator.validate("withdraw 12345678 1001");
 		assertTrue(actual);
 	}
 

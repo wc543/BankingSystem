@@ -21,6 +21,11 @@ public class CommandProcessor {
 			processor.process(input);
 		}
 
+		else if (input[0].equalsIgnoreCase("withdraw")) {
+			WithdrawCommandProcessor processor = new WithdrawCommandProcessor(bank);
+			processor.process(input);
+		}
+
 		return false;
 	}
 }
