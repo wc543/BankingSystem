@@ -26,6 +26,11 @@ public class CommandProcessor {
 			processor.process(input);
 		}
 
+		else if (input[0].equalsIgnoreCase("transfer")) {
+			TransferCommandProcessor processor = new TransferCommandProcessor(bank);
+			processor.process(input);
+		}
+
 		return false;
 	}
 }

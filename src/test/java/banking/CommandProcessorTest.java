@@ -152,4 +152,21 @@ public class CommandProcessorTest {
 
 		assertEquals(1400, account.getBalance());
 	}
+
+	@Test
+	void transfer_from_checking_account_to_savings_account() {
+		commandProcessor.process(CREATE_CHECKING_ACCOUNT_COMMAND);
+		commandProcessor.process(CREATE_SAVINGS_ACCOUNT_COMMAND);
+
+		commandProcessor.process(DEPOSIT_900_IN_CHECKING_ACCOUNT_COMMAND);
+		commandProcessor.process(DEPOSIT_2000_IN_SAVINGS_ACCOUNT_COMMAND);
+
+		Account checking = bank.getAccount().get(CHECKING_ACCOUNT_ID);
+		Account savings = bank.getAccount().get(SAVINGS_ACCOUNT_ID);
+
+		commandProcessor.process("transfer 12345678 87654321 400");
+
+		assertEquals(500, checking.getBalance());
+		assertEquals(2400, savings.getBalance());
+	}
 }
