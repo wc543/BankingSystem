@@ -32,6 +32,11 @@ public class CommandValidator {
 			return validator.validate(input);
 		}
 
+		else if (input[0].equalsIgnoreCase("pass")) {
+			PassCommandValidator validator = new PassCommandValidator(bank);
+			return validator.validate(input);
+		}
+
 		return false;
 	}
 }
