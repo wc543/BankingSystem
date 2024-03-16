@@ -1,3 +1,5 @@
+package banking;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -12,6 +14,7 @@ public class BankTest {
 	public static final String SAVINGS_ACCOUNT_ID = "20000000";
 	public static final double MONEY_TO_DEPOSIT = 1000;
 	public static final double MONEY_TO_WITHDRAW = 1000;
+	public static final double STARTING_APR = 1.2;
 
 	Bank bank;
 
@@ -27,14 +30,14 @@ public class BankTest {
 
 	@Test
 	void add_one_account_to_bank() {
-		bank.addAccount(CHECKING_ACCOUNT_ID, CHECKING_ACCOUNT);
+		bank.addAccount(CHECKING_ACCOUNT_ID, CHECKING_ACCOUNT, STARTING_APR);
 		assertEquals(CHECKING_ACCOUNT, bank.getAccount().get(CHECKING_ACCOUNT_ID).getType());
 	}
 
 	@Test
 	void add_two_accounts_to_bank() {
-		bank.addAccount(CHECKING_ACCOUNT_ID, CHECKING_ACCOUNT);
-		bank.addAccount(SAVINGS_ACCOUNT_ID, SAVINGS_ACCOUNT);
+		bank.addAccount(CHECKING_ACCOUNT_ID, CHECKING_ACCOUNT, STARTING_APR);
+		bank.addAccount(SAVINGS_ACCOUNT_ID, SAVINGS_ACCOUNT, STARTING_APR);
 
 		assertEquals(CHECKING_ACCOUNT, bank.getAccount().get(CHECKING_ACCOUNT_ID).getType());
 		assertEquals(SAVINGS_ACCOUNT, bank.getAccount().get(SAVINGS_ACCOUNT_ID).getType());
@@ -42,16 +45,16 @@ public class BankTest {
 
 	@Test
 	void retrieve_correct_account_from_bank() {
-		bank.addAccount(CHECKING_ACCOUNT_ID, CHECKING_ACCOUNT);
-		bank.addAccount(SAVINGS_ACCOUNT_ID, SAVINGS_ACCOUNT);
+		bank.addAccount(CHECKING_ACCOUNT_ID, CHECKING_ACCOUNT, STARTING_APR);
+		bank.addAccount(SAVINGS_ACCOUNT_ID, SAVINGS_ACCOUNT, STARTING_APR);
 
 		assertEquals(CHECKING_ACCOUNT, bank.getAccount().get(CHECKING_ACCOUNT_ID).getType());
 	}
 
 	@Test
 	void deposit_money_into_correct_account() {
-		bank.addAccount(CHECKING_ACCOUNT_ID, CHECKING_ACCOUNT);
-		bank.addAccount(SAVINGS_ACCOUNT_ID, SAVINGS_ACCOUNT);
+		bank.addAccount(CHECKING_ACCOUNT_ID, CHECKING_ACCOUNT, STARTING_APR);
+		bank.addAccount(SAVINGS_ACCOUNT_ID, SAVINGS_ACCOUNT, STARTING_APR);
 
 		Account account = bank.getAccount().get(CHECKING_ACCOUNT_ID);
 		account.depositMoney(MONEY_TO_DEPOSIT);
@@ -61,8 +64,8 @@ public class BankTest {
 
 	@Test
 	void withdraw_money_from_correct_account() {
-		bank.addAccount(CHECKING_ACCOUNT_ID, CHECKING_ACCOUNT);
-		bank.addAccount(SAVINGS_ACCOUNT_ID, SAVINGS_ACCOUNT);
+		bank.addAccount(CHECKING_ACCOUNT_ID, CHECKING_ACCOUNT, STARTING_APR);
+		bank.addAccount(SAVINGS_ACCOUNT_ID, SAVINGS_ACCOUNT, STARTING_APR);
 
 		Account account = bank.getAccount().get(CHECKING_ACCOUNT_ID);
 		account.depositMoney(MONEY_TO_DEPOSIT);
@@ -73,8 +76,8 @@ public class BankTest {
 
 	@Test
 	void deposit_twice_to_account_through_bank() {
-		bank.addAccount(CHECKING_ACCOUNT_ID, CHECKING_ACCOUNT);
-		bank.addAccount(SAVINGS_ACCOUNT_ID, SAVINGS_ACCOUNT);
+		bank.addAccount(CHECKING_ACCOUNT_ID, CHECKING_ACCOUNT, STARTING_APR);
+		bank.addAccount(SAVINGS_ACCOUNT_ID, SAVINGS_ACCOUNT, STARTING_APR);
 
 		Account account = bank.getAccount().get(CHECKING_ACCOUNT_ID);
 		account.depositMoney(MONEY_TO_DEPOSIT);
@@ -85,8 +88,8 @@ public class BankTest {
 
 	@Test
 	void withdraw_twice_from_account_through_bank() {
-		bank.addAccount(CHECKING_ACCOUNT_ID, CHECKING_ACCOUNT);
-		bank.addAccount(SAVINGS_ACCOUNT_ID, SAVINGS_ACCOUNT);
+		bank.addAccount(CHECKING_ACCOUNT_ID, CHECKING_ACCOUNT, STARTING_APR);
+		bank.addAccount(SAVINGS_ACCOUNT_ID, SAVINGS_ACCOUNT, STARTING_APR);
 
 		Account account = bank.getAccount().get(CHECKING_ACCOUNT_ID);
 		account.depositMoney(MONEY_TO_DEPOSIT);
