@@ -86,6 +86,7 @@ jobs:
 
       - name: Generate Cobertura Report
         run: |
+          mkdir -p builds
           python /opt/cover2cover.py builds/jacoco/jacoco.xml src/main/java > builds/cobertura.xml
           python /opt/source2filename.py builds/cobertura.xml
 
