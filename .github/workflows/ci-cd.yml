@@ -71,7 +71,7 @@ jobs:
         run: tar -czvf build/reports/pitest.tar.gz build/reports/pitest/
 
       - name: Upload Pitest Report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: Pitest Report
           path: build/reports/pitest.tar.gz
@@ -90,7 +90,7 @@ jobs:
           python /opt/source2filename.py builds/cobertura.xml
 
       - name: Upload Coverage Report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: Coverage Report
           path: builds/cobertura.xml
