@@ -23,14 +23,6 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
 
-      - name: Build with Gradle
-        run: ./gradlew assemble --build-cache
-
-      - name: Display CI Paths
-        run: |
-          echo "${{ github.workspace }}"
-          echo "${{ github.event.repository.name }}"
-
       - name: Cache Gradle packages
         uses: actions/cache@v2
         with:
@@ -38,6 +30,14 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+
+      - name: Build with Gradle
+        run: ./gradlew assemble --build-cache
+
+      - name: Display CI Paths
+        run: |
+          echo "${{ github.workspace }}"
+          echo "${{ github.event.repository.name }}"
 
   test:
     runs-on: ubuntu-latest
@@ -47,7 +47,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Run tests and generate reports
+      - name: Run tests and generate Jacoco reports
         run: ./gradlew test jacocoTestReport
 
       - name: Upload Jacoco Report
@@ -84,14 +84,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Generate Cobertura Report
-        run: |
-          mkdir -p builds
-          python /opt/cover2cover.py builds/jacoco/jacoco.xml src/main/java > builds/cobertura.xml
-          python /opt/source2filename.py builds/cobertura.xml
+      - name: Convert Jacoco to Cobertura
+        run: ./gradlew convertJacocoToCobertura
 
       - name: Upload Coverage Report
         uses: actions/upload-artifact@v3
         with:
           name: Coverage Report
-          path: builds/cobertura.xml
+          path: builds/cobertura/cobertura.xml
