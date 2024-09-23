@@ -75,20 +75,3 @@ jobs:
         with:
           name: Pitest Report
           path: build/reports/pitest.tar.gz
-
-  coverage-jdk11:
-    runs-on: ubuntu-latest
-    needs: mutation-coverage
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Convert Jacoco to Cobertura
-        run: ./gradlew convertJacocoToCobertura
-
-      - name: Upload Coverage Report
-        uses: actions/upload-artifact@v3
-        with:
-          name: Coverage Report
-          path: builds/cobertura/cobertura.xml

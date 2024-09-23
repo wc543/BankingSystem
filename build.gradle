@@ -3,7 +3,6 @@ plugins {
     id 'idea'
     id 'jacoco'
     id 'info.solidsoft.pitest' version '1.5.2'
-    id 'com.github.victorbaggio.jacoco2cobertura' version '1.0' // Adjust if needed
 }
 
 group 'org.example'
@@ -11,7 +10,6 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
-    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
@@ -28,6 +26,7 @@ test {
 jacocoTestReport {
     reports {
         xml.destination = file("builds/jacoco/jacoco.xml")
+        html.destination = file("builds/jacoco/html")
     }
 }
 
@@ -40,10 +39,3 @@ pitest {
     junit5PluginVersion = "0.12"
     outputFormats = ['XML', 'HTML']
 }
-
-task convertJacocoToCobertura(type: com.github.victorbaggio.Jacoco2Cobertura) {
-    jacocoReportPath = file("builds/jacoco/jacoco.xml")
-    coberturaReportPath = file("builds/cobertura/cobertura.xml")
-}
-
-jacocoTestReport.finalizedBy convertJacocoToCobertura
