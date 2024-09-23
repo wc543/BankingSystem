@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="banking.CommandProcessorTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2024-09-23T04:20:37" hostname="WINSONCHEN" time="0.059">
+  <properties/>
+  <testcase name="deposit_into_savings_account_with_balance()" classname="banking.CommandProcessorTest" time="0.011"/>
+  <testcase name="deposit_into_checking_account_with_balance()" classname="banking.CommandProcessorTest" time="0.002"/>
+  <testcase name="transfer_from_savings_account_to_checking_account()" classname="banking.CommandProcessorTest" time="0.005"/>
+  <testcase name="deposit_into_savings_account_twice()" classname="banking.CommandProcessorTest" time="0.002"/>
+  <testcase name="create_savings_account_with_correct_id_and_apr()" classname="banking.CommandProcessorTest" time="0.003"/>
+  <testcase name="transfer_from_checking_account_to_savings_account()" classname="banking.CommandProcessorTest" time="0.002"/>
+  <testcase name="withdraw_from_savings_account_with_balance()" classname="banking.CommandProcessorTest" time="0.004"/>
+  <testcase name="withdraw_from_checking_account_with_balance()" classname="banking.CommandProcessorTest" time="0.001"/>
+  <testcase name="create_checking_account_with_correct_id_and_apr()" classname="banking.CommandProcessorTest" time="0.001"/>
+  <testcase name="deposit_into_empty_checking_account()" classname="banking.CommandProcessorTest" time="0.001"/>
+  <testcase name="deposit_into_checking_account_twice()" classname="banking.CommandProcessorTest" time="0.001"/>
+  <testcase name="deposit_into_empty_savings_account()" classname="banking.CommandProcessorTest" time="0.001"/>
+  <testcase name="create_cd_account_with_correct_id_and_apr()" classname="banking.CommandProcessorTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

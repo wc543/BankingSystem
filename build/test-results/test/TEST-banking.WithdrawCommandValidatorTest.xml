@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="banking.WithdrawCommandValidatorTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2024-09-23T04:20:38" hostname="WINSONCHEN" time="0.031">
+  <properties/>
+  <testcase name="withdraw_maximum_of_400_from_checking_account_is_valid()" classname="banking.WithdrawCommandValidatorTest" time="0.001"/>
+  <testcase name="withdraw_negative_amount_from_savings_account_is_invalid()" classname="banking.WithdrawCommandValidatorTest" time="0.001"/>
+  <testcase name="withdraw_from_cd_account_is_valid()" classname="banking.WithdrawCommandValidatorTest" time="0.002"/>
+  <testcase name="empty_command_is_invalid()" classname="banking.WithdrawCommandValidatorTest" time="0.001"/>
+  <testcase name="withdraw_more_than_cd_account_total_balance_is_valid()" classname="banking.WithdrawCommandValidatorTest" time="0.001"/>
+  <testcase name="withdraw_from_savings_account_is_valid()" classname="banking.WithdrawCommandValidatorTest" time="0.0"/>
+  <testcase name="withdraw_from_account_missing_amount_is_invalid()" classname="banking.WithdrawCommandValidatorTest" time="0.001"/>
+  <testcase name="withdraw_maximum_of_1000_from_checking_account_is_valid()" classname="banking.WithdrawCommandValidatorTest" time="0.001"/>
+  <testcase name="withdraw_negative_amount_from_checking_account_is_invalid()" classname="banking.WithdrawCommandValidatorTest" time="0.0"/>
+  <testcase name="withdraw_0_from_savings_account_is_valid()" classname="banking.WithdrawCommandValidatorTest" time="0.001"/>
+  <testcase name="withdraw_from_account_missing_account_id_and_amount_is_invalid()" classname="banking.WithdrawCommandValidatorTest" time="0.001"/>
+  <testcase name="withdraw_less_than_cd_account_total_balance_is_invalid()" classname="banking.WithdrawCommandValidatorTest" time="0.001"/>
+  <testcase name="withdraw_0_from_checking_account_is_valid()" classname="banking.WithdrawCommandValidatorTest" time="0.001"/>
+  <testcase name="withdraw_from_checking_account_is_valid()" classname="banking.WithdrawCommandValidatorTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

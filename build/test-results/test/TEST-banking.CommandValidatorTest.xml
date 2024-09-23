@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="banking.CommandValidatorTest" tests="19" skipped="0" failures="0" errors="0" timestamp="2024-09-23T04:20:37" hostname="WINSONCHEN" time="0.087">
+  <properties/>
+  <testcase name="validate_create_command_is_valid()" classname="banking.CommandValidatorTest" time="0.007"/>
+  <testcase name="validate_deposit_command_is_valid()" classname="banking.CommandValidatorTest" time="0.005"/>
+  <testcase name="validate_withdraw_command_missing_account_id_is_invalid()" classname="banking.CommandValidatorTest" time="0.009"/>
+  <testcase name="validate_create_command_missing_account_type_is_invalid()" classname="banking.CommandValidatorTest" time="0.001"/>
+  <testcase name="validate_withdraw_command_missing_amount_is_invalid()" classname="banking.CommandValidatorTest" time="0.001"/>
+  <testcase name="validate_withdraw_command_missing_action_is_invalid()" classname="banking.CommandValidatorTest" time="0.002"/>
+  <testcase name="validate_withdraw_command_is_valid()" classname="banking.CommandValidatorTest" time="0.002"/>
+  <testcase name="validate_deposit_command_is_spelled_wrong_is_invalid()" classname="banking.CommandValidatorTest" time="0.002"/>
+  <testcase name="validate_deposit_command_missing_account_id_is_invalid()" classname="banking.CommandValidatorTest" time="0.001"/>
+  <testcase name="validate_create_command_is_case_insensitive_is_valid()" classname="banking.CommandValidatorTest" time="0.002"/>
+  <testcase name="validate_create_command_missing_account_id_is_invalid()" classname="banking.CommandValidatorTest" time="0.004"/>
+  <testcase name="validate_withdraw_command_is_case_insensitive_is_valid()" classname="banking.CommandValidatorTest" time="0.001"/>
+  <testcase name="validate_create_command_missing_apr_is_invalid()" classname="banking.CommandValidatorTest" time="0.002"/>
+  <testcase name="validate_deposit_command_missing_amount_is_invalid()" classname="banking.CommandValidatorTest" time="0.001"/>
+  <testcase name="validate_deposit_command_is_case_insensitive_is_valid()" classname="banking.CommandValidatorTest" time="0.002"/>
+  <testcase name="validate_create_command_missing_action_is_invalid()" classname="banking.CommandValidatorTest" time="0.004"/>
+  <testcase name="validate_deposit_command_missing_action_is_invalid()" classname="banking.CommandValidatorTest" time="0.001"/>
+  <testcase name="validate_withdraw_command_is_spelled_wrong_is_invalid()" classname="banking.CommandValidatorTest" time="0.001"/>
+  <testcase name="validate_create_command_is_spelled_wrong_is_invalid()" classname="banking.CommandValidatorTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

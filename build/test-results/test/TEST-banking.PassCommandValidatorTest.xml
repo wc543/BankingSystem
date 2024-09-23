@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="banking.PassCommandValidatorTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2024-09-23T04:20:38" hostname="WINSONCHEN" time="0.025">
+  <properties/>
+  <testcase name="command_missing_amount_of_time_is_invalid()" classname="banking.PassCommandValidatorTest" time="0.004"/>
+  <testcase name="pass_time_is_equal_to_0_is_invalid()" classname="banking.PassCommandValidatorTest" time="0.001"/>
+  <testcase name="pass_time_is_negative_is_invalid()" classname="banking.PassCommandValidatorTest" time="0.002"/>
+  <testcase name="pass_time_is_equal_to_maximum_of_60_is_valid()" classname="banking.PassCommandValidatorTest" time="0.001"/>
+  <testcase name="empty_command_is_invalid()" classname="banking.PassCommandValidatorTest" time="0.001"/>
+  <testcase name="command_missing_action_is_invalid()" classname="banking.PassCommandValidatorTest" time="0.002"/>
+  <testcase name="pass_time_is_above_maximum_of_60_is_valid()" classname="banking.PassCommandValidatorTest" time="0.001"/>
+  <testcase name="pass_time_is_valid()" classname="banking.PassCommandValidatorTest" time="0.001"/>
+  <testcase name="pass_time_is_equal_to_minimum_of_1_is_valid()" classname="banking.PassCommandValidatorTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

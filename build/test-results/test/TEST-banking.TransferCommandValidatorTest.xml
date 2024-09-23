@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="banking.TransferCommandValidatorTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2024-09-23T04:20:38" hostname="WINSONCHEN" time="0.024">
+  <properties/>
+  <testcase name="transfer_to_account_missing_account_id_to_transfer_to_is_invalid()" classname="banking.TransferCommandValidatorTest" time="0.007"/>
+  <testcase name="transfer_from_cd_account_is_invalid()" classname="banking.TransferCommandValidatorTest" time="0.001"/>
+  <testcase name="transfer_to_account_missing_account_id_to_transfer_from_is_invalid()" classname="banking.TransferCommandValidatorTest" time="0.001"/>
+  <testcase name="empty_command_is_invalid()" classname="banking.TransferCommandValidatorTest" time="0.0"/>
+  <testcase name="transfer_to_cd_account_is_invalid()" classname="banking.TransferCommandValidatorTest" time="0.001"/>
+  <testcase name="transfer_into_same_account_is_invalid()" classname="banking.TransferCommandValidatorTest" time="0.001"/>
+  <testcase name="transfer_between_accounts_is_valid()" classname="banking.TransferCommandValidatorTest" time="0.001"/>
+  <testcase name="transfer_without_specifying_amount_to_transfer_is_invalid()" classname="banking.TransferCommandValidatorTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

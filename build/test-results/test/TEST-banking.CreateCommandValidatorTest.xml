@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="banking.CreateCommandValidatorTest" tests="24" skipped="0" failures="0" errors="0" timestamp="2024-09-23T04:20:37" hostname="WINSONCHEN" time="0.069">
+  <properties/>
+  <testcase name="create_cd_account_with_starting_balance_between_1000_and_10000_is_valid()" classname="banking.CreateCommandValidatorTest" time="0.002"/>
+  <testcase name="create_account_with_apr_below_0_is_invalid()" classname="banking.CreateCommandValidatorTest" time="0.002"/>
+  <testcase name="create_account_with_apr_above_10_is_invalid()" classname="banking.CreateCommandValidatorTest" time="0.001"/>
+  <testcase name="create_account_with_apr_0_is_valid()" classname="banking.CreateCommandValidatorTest" time="0.0"/>
+  <testcase name="empty_command_is_invalid()" classname="banking.CreateCommandValidatorTest" time="0.001"/>
+  <testcase name="create_account_with_maximum_apr_10_is_valid()" classname="banking.CreateCommandValidatorTest" time="0.001"/>
+  <testcase name="create_account_with_apr_between_0_and_10_is_valid()" classname="banking.CreateCommandValidatorTest" time="0.001"/>
+  <testcase name="create_account_with_account_id_length_more_than_8_is_invalid()" classname="banking.CreateCommandValidatorTest" time="0.001"/>
+  <testcase name="create_account_with_integer_apr_is_valid()" classname="banking.CreateCommandValidatorTest" time="0.001"/>
+  <testcase name="create_cd_account_with_maximum_starting_balance_of_10000_is_valid()" classname="banking.CreateCommandValidatorTest" time="0.002"/>
+  <testcase name="create_cd_account_with_minimum_starting_balance_of_1000_is_valid()" classname="banking.CreateCommandValidatorTest" time="0.001"/>
+  <testcase name="create_cd_account_with_starting_balance_less_than_1000_is_invalid()" classname="banking.CreateCommandValidatorTest" time="0.002"/>
+  <testcase name="create_account_with_account_id_length_less_than_8_is_invalid()" classname="banking.CreateCommandValidatorTest" time="0.001"/>
+  <testcase name="create_checking_account_with_existing_account_id_is_invalid()" classname="banking.CreateCommandValidatorTest" time="0.001"/>
+  <testcase name="create_cd_account_with_existing_account_id_is_invalid()" classname="banking.CreateCommandValidatorTest" time="0.001"/>
+  <testcase name="create_account_with_missing_account_type_and_apr_and_account_id_is_invalid()" classname="banking.CreateCommandValidatorTest" time="0.004"/>
+  <testcase name="create_account_with_missing_apr_is_invalid()" classname="banking.CreateCommandValidatorTest" time="0.002"/>
+  <testcase name="create_account_with_account_id_length_equals_8_is_valid()" classname="banking.CreateCommandValidatorTest" time="0.002"/>
+  <testcase name="create_cd_account_without_starting_balance_is_invalid()" classname="banking.CreateCommandValidatorTest" time="0.001"/>
+  <testcase name="create_savings_account_with_starting_balance_is_invalid()" classname="banking.CreateCommandValidatorTest" time="0.001"/>
+  <testcase name="create_checking_account_with_starting_balance_is_invalid()" classname="banking.CreateCommandValidatorTest" time="0.001"/>
+  <testcase name="create_account_with_missing_apr_and_account_id_is_invalid()" classname="banking.CreateCommandValidatorTest" time="0.001"/>
+  <testcase name="create_savings_account_with_existing_account_id_is_invalid()" classname="banking.CreateCommandValidatorTest" time="0.001"/>
+  <testcase name="create_cd_account_with_starting_balance_greater_than_10000_is_invalid()" classname="banking.CreateCommandValidatorTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
